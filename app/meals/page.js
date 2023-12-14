@@ -2,8 +2,14 @@ import MealsGrid from "../components/meals/meals-grid";
 import classes from "./page.module.css";
 import Link from "next/link";
 import { getMeals } from "../lib/meals";
-function mealsPage() {
+import { Suspense } from "react";
+
+function Meals() {
   const meals = getMeals();
+  return <MealsGrid meals={meals} />;
+}
+
+function MealsPage() {
   return (
     <>
       <header className={classes.header}>
@@ -20,10 +26,14 @@ function mealsPage() {
         </p>
       </header>
       <main className={classes.main}>
-        <MealsGrid meals={meals} />
+        <Suspense
+          fallback={<p className={classes.loading}>Fetching meals...</p>}
+        >
+          <Meals />
+        </Suspense>
       </main>
     </>
   );
 }
 
-export default mealsPage;
+export default MealsPage;

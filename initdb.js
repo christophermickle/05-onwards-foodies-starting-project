@@ -176,7 +176,7 @@ db.prepare(
        creator TEXT NOT NULL,
        creator_email TEXT NOT NULL
     )
-`
+`,
 ).run();
 
 async function initData() {
