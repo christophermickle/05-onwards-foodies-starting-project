@@ -1,22 +1,23 @@
-import  Image  from "next/image";
+import Image from "next/image";
 import classes from "./meal-details.module.css";
 import { getMeal } from "@/app/lib/meals";
 
-function MealDetails({params}) {
-  const meal = getMeal(params.mealSlug)
+function MealDetails({ params }) {
+  const meal = getMeal(params.mealSlug);
 
-  meal.instructions = meal.instructions.replace(/\n/g, '<br/>')
+  meal.instructions = meal.instructions.replace(/\n/g, "<br/>");
   return (
     <>
       <header className={classes.header}>
         <div className={classes.image}>
-          <Image src={meal.image} fill alt={meal.title}/>
+          <Image src={meal.image} fill alt={meal.title} />
         </div>
         <div className={classes.headerText}>
           <h1>{meal.title}</h1>
           <p className={classes.creator}>
             {" "}
-            created by <a href={`mailto:${meal.creator_email}`}>{meal.creator}</a>
+            created by{" "}
+            <a href={`mailto:${meal.creator_email}`}>{meal.creator}</a>
           </p>
           <p className={classes.summary}>{meal.summary}</p>
         </div>
@@ -25,7 +26,7 @@ function MealDetails({params}) {
         <p
           className={classes.instructions}
           dangerouslySetInnerHTML={{
-            __html:meal.instructions,
+            __html: meal.instructions,
           }}
         ></p>
       </main>
