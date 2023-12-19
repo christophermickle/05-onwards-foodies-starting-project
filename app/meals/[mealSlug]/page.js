@@ -1,9 +1,9 @@
 import Image from "next/image";
 import classes from "./meal-details.module.css";
-import { getMeal } from "@/app/lib/meals";
+import { dummyMeals } from "@/initdb";
 
 function MealDetails({ params }) {
-  const meal = getMeal(params.mealSlug);
+  const meal = dummyMeals.find((m) => m.slug === params.mealSlug);
 
   meal.instructions = meal.instructions.replace(/\n/g, "<br/>");
   return (

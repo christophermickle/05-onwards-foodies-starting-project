@@ -1,12 +1,11 @@
 import MealsGrid from "../components/meals/meals-grid";
 import classes from "./page.module.css";
 import Link from "next/link";
-import { getMeals } from "../lib/meals";
+// import { getMeals } from "../lib/meals";
 import { Suspense } from "react";
-
+import { dummyMeals } from "@/initdb";
 function Meals() {
-  const meals = getMeals();
-  return <MealsGrid meals={meals} />;
+  return <MealsGrid meals={dummyMeals.map((m) => m)} />;
 }
 
 function MealsPage() {
